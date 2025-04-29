@@ -41,6 +41,30 @@ class Links extends Component {
   }
 }
 
+class Quote extends Component {
+  constructor() {
+    super();
+  }
+
+  static getQuote(tab) {
+    return `
+        ${(CONFIG.quote.title == "")
+            ? ``
+            : `<div class="title">${CONFIG.quote.title}</div> <li><li>`
+        }
+        ${(CONFIG.quote.body == "")
+          ? ``
+          : `<div class="body">${CONFIG.quote.body}</div>`
+        }
+        ${(CONFIG.quote.author == "")
+          ? ``
+          : `<div class="author">&#x2014 ${CONFIG.quote.author}</div>`
+        }
+    `;
+  }
+
+}
+
 class Category extends Component {
   constructor() {
     super();
@@ -56,7 +80,12 @@ class Category extends Component {
         .map(({ name, background_url }, index) => {
           return `<ul class="${name}" ${Category.getBackgroundStyle(background_url)} ${index == 0 ? "active" : ""}>
             <div class="banner"></div>
-            <div class="links">${Links.getAll(name, tabs)}</div>
+            <div class="links">
+              <div class="quote">
+                ${Quote.getQuote()}
+              </div>
+                ${Links.getAll(name, tabs)}
+              </div>
           </ul>`;
         })
         .join("")}
@@ -141,7 +170,7 @@ class Tabs extends Component {
       }
 
       .categories ul:nth-child(1) {
-          --flavour: ${CONFIG.palette.green};
+          --flavour: ${CONFIG.palette.peach};
       }
 
       .categories ul:nth-child(2) {
@@ -230,7 +259,7 @@ class Tabs extends Component {
           flex-wrap: wrap;
           word-break: break-all;
           align-items: center;
-          backdrop-filter: blur(3px);
+          backdrop-filter: blur(2px);
       }
 
       .categories .links li:not(:last-child) {
@@ -241,13 +270,37 @@ class Tabs extends Component {
 
       .categories .links li h1 {
           color: ${CONFIG.palette.text};
-        opacity: 0.5;
+          opacity: 0.5;
           font-size: 13px;
           margin-bottom: 1em;
           font-weight: 600;
           letter-spacing: 1px;
           text-transform: uppercase;
           font-family: 'Raleway', sans-serif;
+      }
+
+      .categories .quote {
+          color: ${CONFIG.palette.text};
+          opacity: 0.5;
+          font-size: 16px;
+          margin-bottom: 1em;
+          font-weight: 600;
+      }
+
+      .categories .quote .title {
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-family: 'Raleway', sans-serif;
+      }
+
+      .categories .quote .body {
+          font-size: 16px;
+      }
+
+      .categories .quote .author {
+          font-size: 16px;
+          text-align: right;
+          padding: 1em;
       }
 
       .categories .link-icon {
@@ -291,7 +344,6 @@ class Tabs extends Component {
           <div class="categories">
             ${Category.getAll(this.tabs)}
           </div>
-          <status-bar class="!-"></status-bar>
         </div>
       </div>
     `;

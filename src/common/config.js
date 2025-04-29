@@ -10,6 +10,7 @@ class Config {
     },
     disabled: [],
     openLastVisitedTab: false,
+    quote: {},
     tabs: [],
   };
 
