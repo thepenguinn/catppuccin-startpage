@@ -16,9 +16,9 @@ const default_config = {
   fastlink: "https://app.raindrop.io",
   openLastVisitedTab: true,
   quote: {
-    title: "Under the sycamore",
-    body: "I am sitting under a sycamore by Tinker Creek. I am really here, alive on the intricate earth under trees.",
-    author: "Annie Dillard",
+    title: "The One in One-hundred",
+    body: "Out of every one-hundred men, ten shouldn’t even be there, eighty are just targets, nine are the real fighters, and we are lucky to have them, for they make the battle. Ah, but the one, one is a warrior and he will bring the others back.",
+    author: "Heraclitus",
     // body: "I am sitting under a sycamore by Tinker Creek. I am really here, alive on the intricate earth under trees.",
     // author: "Annie Dillard",
   },

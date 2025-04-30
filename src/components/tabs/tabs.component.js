@@ -54,7 +54,7 @@ class Quote extends Component {
         }
         ${(CONFIG.quote.body == "")
           ? ``
-          : `<div class="body">${CONFIG.quote.body}</div>`
+          : `<div class="body">“${CONFIG.quote.body}”</div>`
         }
         ${(CONFIG.quote.author == "")
           ? ``
